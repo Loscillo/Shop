@@ -92,6 +92,7 @@ public class Shop {
 		if(prix != 0){
 			if(stock >= quantite){
 				double cout = prix * quantite;
+				if(Vault.economy.has(joueur.getName(), cout)){
 				Vault.economy.withdrawPlayer(joueur.getName(), cout);
 				ItemStack achat = new ItemStack(id, quantite, data);
 				joueur.getInventory().addItem(achat);
@@ -108,27 +109,36 @@ public class Shop {
 				}
 				catch (ClassNotFoundException e) { e.printStackTrace(); }
 				catch (SQLException e) { e.printStackTrace(); }
+				}
+				else{
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent nécessaire pour acheter cela");
+				}
 			}
 			else{
 				int quantite_restante = quantite-stock;
 				double cout = prix * stock + prix * quantite_restante * 1.1;
-				stock = 0;
-				Vault.economy.withdrawPlayer(joueur.getName(), cout);
-				ItemStack achat = new ItemStack(id, quantite, data);
-				joueur.getInventory().addItem(achat);
-				joueur.sendMessage(shop_message + "Vous avez acheté " + quantite + " de " + achat.getType().toString() + ":" + data + " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					 
-					Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
-				      
-				      Statement state = conn.createStatement();
-				      state.executeUpdate("UPDATE shop SET stock = 0, difference = difference + " + quantite + " WHERE id = " + id + " AND data = " + data);
-				      state.close();
-				      conn.close();
+				if(Vault.economy.has(joueur.getName(), cout)){
+					stock = 0;
+					Vault.economy.withdrawPlayer(joueur.getName(), cout);
+					ItemStack achat = new ItemStack(id, quantite, data);
+					joueur.getInventory().addItem(achat);
+					joueur.sendMessage(shop_message + "Vous avez acheté " + quantite + " de " + achat.getType().toString() + ":" + data + " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
+					try {
+						Class.forName("com.mysql.jdbc.Driver");
+						 
+						Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
+					      
+					      Statement state = conn.createStatement();
+					      state.executeUpdate("UPDATE shop SET stock = 0, difference = difference + " + quantite + " WHERE id = " + id + " AND data = " + data);
+					      state.close();
+					      conn.close();
+					}
+					catch (ClassNotFoundException e) { e.printStackTrace(); }
+					catch (SQLException e) { e.printStackTrace(); }
 				}
-				catch (ClassNotFoundException e) { e.printStackTrace(); }
-				catch (SQLException e) { e.printStackTrace(); }
+				else{
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent nécessaire pour acheter cela");
+				}
 			}
 		}
 		else{
