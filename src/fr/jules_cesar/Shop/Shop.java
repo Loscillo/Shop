@@ -96,7 +96,7 @@ public class Shop {
 				Vault.economy.withdrawPlayer(joueur.getName(), cout);
 				ItemStack achat = new ItemStack(id, quantite, data);
 				joueur.getInventory().addItem(achat);
-				joueur.sendMessage(shop_message + "Vous avez achet� " + quantite + " de " + achat.getType().toString() + (data==0?"":":"+data)+ " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
+				joueur.sendMessage(shop_message + "Vous avez achet\u00e9 " + quantite + " de " + achat.getType().toString() + (data==0?"":":"+data)+ " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
 					 
@@ -111,7 +111,7 @@ public class Shop {
 				catch (SQLException e) { e.printStackTrace(); }
 				}
 				else{
-					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent n�cessaire pour acheter cela");
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent n\u00e9cessaire pour acheter cela");
 				}
 			}
 			else{
@@ -122,7 +122,7 @@ public class Shop {
 					Vault.economy.withdrawPlayer(joueur.getName(), cout);
 					ItemStack achat = new ItemStack(id, quantite, data);
 					joueur.getInventory().addItem(achat);
-					joueur.sendMessage(shop_message + "Vous avez achet� " + quantite + " de " + achat.getType().toString() + (data==0?"":":"+data)+ " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
+					joueur.sendMessage(shop_message + "Vous avez achet\u00e9 " + quantite + " de " + achat.getType().toString() + (data==0?"":":"+data)+ " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
 					try {
 						Class.forName("com.mysql.jdbc.Driver");
 						 
@@ -137,7 +137,7 @@ public class Shop {
 					catch (SQLException e) { e.printStackTrace(); }
 				}
 				else{
-					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent n�cessaire pour acheter cela");
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent n\u00e9cessaire pour acheter cela");
 				}
 			}
 		}

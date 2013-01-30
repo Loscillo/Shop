@@ -51,7 +51,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 		}
 		
 		else{
-			sender.sendMessage("[SHOP] Les commandes sont réservés aux joueurs");
+			sender.sendMessage("[SHOP] Les commandes sont r\u00e9serv\u00e9s aux joueurs");
 			return true;
 		}
 	}
@@ -77,7 +77,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				      }
 				      else{
 				    	  state.close();
-				    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop existe déjà !");
+				    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop existe d\u00e9jà !");
 				      }
 				      
 				}
@@ -86,12 +86,12 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				return true;
 			}
 			else{
-				joueur.sendMessage(shop_message + ChatColor.RED + "L'id, la data et le prix doivent être des nombres");
+				joueur.sendMessage(shop_message + ChatColor.RED + "L'id, la data et le prix doivent \u00eatre des nombres");
 				return true;
 			}
 		}
 		else{
-			joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas la permission de créer un shop");
+			joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas la permission de cr\u00e9er un shop");
 			return true;
 		}
 	}
@@ -115,7 +115,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 					    	  Shop.vendre(Integer.parseInt(quantite), joueur, Integer.parseInt(id), Byte.parseByte(data));
 					      }
 					      else{
-					    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configuré");
+					    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configur\u00e9");
 					      }
 					      
 					}
@@ -123,15 +123,15 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 					catch (SQLException e) { e.printStackTrace(); }
 				}
 				else{
-					joueur.sendMessage(shop_message + ChatColor.RED + "Vous devez être en mode survie pour vendre");
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous devez \u00eatre en mode survie pour vendre");
 				}
 			}
 			else{
-				joueur.sendMessage(shop_message + ChatColor.RED + "La quantité doit être supérieure à 0");
+				joueur.sendMessage(shop_message + ChatColor.RED + "La quantit\u00e9 doit \u00eatre sup\u00e9rieure à 0");
 			}
 		}
 		else{
-			joueur.sendMessage(shop_message + ChatColor.RED + "L'id, la data et la quantité doivent être des nombres");
+			joueur.sendMessage(shop_message + ChatColor.RED + "L'id, la data et la quantit\u00e9 doivent \u00eatre des nombres");
 		}
 		return true;
 	}
@@ -155,7 +155,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 					    	  Shop.acheter(Integer.parseInt(quantite), joueur, Integer.parseInt(id), Byte.parseByte(data));
 					      }
 					      else{
-					    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configuré");
+					    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configur\u00e9");
 					      }
 					      
 					}
@@ -163,15 +163,15 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 					catch (SQLException e) { e.printStackTrace(); }
 				}
 				else{
-					joueur.sendMessage(shop_message + ChatColor.RED + "Vous devez être en mode survie pour acheter");
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous devez \u00eatre en mode survie pour acheter");
 				}
 			}
 			else{
-				joueur.sendMessage(shop_message + ChatColor.RED + "La quantité doit être supérieure à 0");
+				joueur.sendMessage(shop_message + ChatColor.RED + "La quantit\u00e9 doit \u00eatre sup\u00e9rieure à 0");
 			}
 		}
 		else{
-			joueur.sendMessage(shop_message + ChatColor.RED + "L'id, la data et la quantité doivent être des nombres");
+			joueur.sendMessage(shop_message + ChatColor.RED + "L'id, la data et la quantit\u00e9 doivent \u00eatre des nombres");
 		}
 		return true;
 	}
@@ -224,11 +224,11 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				joueur.sendMessage(ChatColor.GOLD + "Stock : " + stock);
 			}
 			else{
-				joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configuré");
+				joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configur\u00e9");
 			}
 		}
 		else{
-			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id et la data doivent être des nombres");
+			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id et la data doivent \u00eatre des nombres");
 		}
 		return true;
 	}
