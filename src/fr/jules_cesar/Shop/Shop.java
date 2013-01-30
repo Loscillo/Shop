@@ -17,7 +17,7 @@ import org.bukkit.material.MaterialData;
 @SuppressWarnings("unused")
 public class Shop {
 	
-	private static String shop_message = ChatColor.GOLD + "[SHOP] ";
+	public static String shop_message = ChatColor.GOLD + "[SHOP] ";
 	
 	public static void vendre(int quantite, Player joueur, int id, byte data){
 		ItemStack vente_un = new ItemStack(id, 0 , data); vente_un.setAmount(quantite - 1);

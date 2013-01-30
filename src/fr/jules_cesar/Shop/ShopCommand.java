@@ -177,7 +177,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 	}
 
 	// Détermine si une chaine de caractère est un nombre
-	private boolean estunNombre(String string){
+	public static boolean estunNombre(String string){
 		Pattern pattern = Pattern.compile("[^0-9]");
 		Matcher matcher = pattern.matcher(string);
 		if(matcher.find()) return false;
