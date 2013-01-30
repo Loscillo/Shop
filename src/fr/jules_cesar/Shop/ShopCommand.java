@@ -233,11 +233,11 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 		return true;
 	}
 	
-	public static String formatDouble(double val, int nb) { 
+	public static double formatDouble(double val, int nb) { 
 		String s = ""+val; 
 		int idx = s.indexOf('.'); 
 		if (idx != -1 && idx < s.length() - nb) 
 		s = s.substring(0, idx + nb+(nb==0 ? 0 : 1)); 
-		return s; 
+		return Double.parseDouble(s);
 		}
 }
