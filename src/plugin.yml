@@ -1,0 +1,12 @@
+name: Shop
+main: fr.jules_cesar.Shop.main
+version: 1.0
+author: Jules_Cesar
+depend: [Vault]
+commands:
+    shop:
+        description: Utiliser le plugin d'achat/vente.
+permissions:
+    shop.modification:
+      description: Permet de modifier les shops.
+      default: false
