@@ -44,7 +44,7 @@ public class Shop {
 				Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
 			      
 			      Statement state = conn.createStatement();
-			      //L'objet ResultSet contient le résultat de la requête SQL
+			      //L'objet ResultSet contient le rÔøΩsultat de la requÔøΩte SQL
 			      ResultSet result = state.executeQuery("SELECT prix FROM shop WHERE id = " + id + " AND data = " + data);
 			      result.next();
 			      prix = Double.parseDouble(result.getObject(1).toString()); result.close();
@@ -58,7 +58,7 @@ public class Shop {
 			if(prix != 0){
 				double gain = prix * quantite;
 				Vault.economy.depositPlayer(joueur.getName(), gain);
-				joueur.sendMessage(shop_message + "Vous avez vendu " + quantite + " de " + vente_un.getType().toString()+":"+ data + " pour " + ShopCommand.formatDouble(gain, 2) + " EIG");
+				joueur.sendMessage(shop_message + "Vous avez vendu " + quantite + " de " + vente_un.getType().toString()+(data==0?"":":"+data) + " pour " + ShopCommand.formatDouble(gain, 2) + " EIG");
 			}
 			else{
 				joueur.sendMessage(shop_message + ChatColor.RED + "Erreur du plugin, contactez un administrateur.");
@@ -76,7 +76,7 @@ public class Shop {
 			Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
 		      
 		      Statement state = conn.createStatement();
-		      //L'objet ResultSet contient le résultat de la requête SQL
+		      //L'objet ResultSet contient le rÔøΩsultat de la requÔøΩte SQL
 		      ResultSet result = state.executeQuery("SELECT stock FROM shop WHERE id = " + id + " AND data = " + data);
 		      result.next();
 		      stock = Integer.parseInt(result.getObject(1).toString()); result.close();
@@ -96,7 +96,7 @@ public class Shop {
 				Vault.economy.withdrawPlayer(joueur.getName(), cout);
 				ItemStack achat = new ItemStack(id, quantite, data);
 				joueur.getInventory().addItem(achat);
-				joueur.sendMessage(shop_message + "Vous avez acheté " + quantite + " de " + achat.getType().toString() + ":"+ data + " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
+				joueur.sendMessage(shop_message + "Vous avez achetÔøΩ " + quantite + " de " + achat.getType().toString() + (data==0?"":":"+data)+ " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
 					 
@@ -111,7 +111,7 @@ public class Shop {
 				catch (SQLException e) { e.printStackTrace(); }
 				}
 				else{
-					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent nécessaire pour acheter cela");
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent nÔøΩcessaire pour acheter cela");
 				}
 			}
 			else{
@@ -122,7 +122,7 @@ public class Shop {
 					Vault.economy.withdrawPlayer(joueur.getName(), cout);
 					ItemStack achat = new ItemStack(id, quantite, data);
 					joueur.getInventory().addItem(achat);
-					joueur.sendMessage(shop_message + "Vous avez acheté " + quantite + " de " + achat.getType().toString() + ":" + data + " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
+					joueur.sendMessage(shop_message + "Vous avez achetÔøΩ " + quantite + " de " + achat.getType().toString() + (data==0?"":":"+data)+ " pour " + ShopCommand.formatDouble(cout, 2) + " EIG");
 					try {
 						Class.forName("com.mysql.jdbc.Driver");
 						 
@@ -137,7 +137,7 @@ public class Shop {
 					catch (SQLException e) { e.printStackTrace(); }
 				}
 				else{
-					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent nécessaire pour acheter cela");
+					joueur.sendMessage(shop_message + ChatColor.RED + "Vous n'avez pas l'argent nÔøΩcessaire pour acheter cela");
 				}
 			}
 		}
