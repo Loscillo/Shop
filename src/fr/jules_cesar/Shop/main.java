@@ -168,7 +168,7 @@ public class main extends JavaPlugin implements Listener{
 	
 	@EventHandler
 	public void onBreakBlock(BlockBreakEvent e){
-		if(e.getBlock().getType() == Material.WALL_SIGN){
+		if(e.getBlock().getType() == Material.WALL_SIGN || e.getBlock().getType() == Material.SIGN_POST){
 			Sign panneau = (Sign)(e.getBlock().getState());
 			if(panneau.getLine(0).equalsIgnoreCase("[shop]") && !Vault.perms.has(e.getPlayer().getWorld(), e.getPlayer().getName(), "shop.modification"))
 				e.setCancelled(true);
