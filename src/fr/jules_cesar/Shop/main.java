@@ -112,7 +112,7 @@ public class main extends JavaPlugin implements Listener{
 					String data = panneau.getLine(2);
 					id = id.substring(id.indexOf(':') + 2);
 					if(data.equalsIgnoreCase("pas de data")) data = "0";
-					else data = data.substring(id.indexOf(':') + 2);
+					else data = data.substring(data.indexOf(':') + 2);
 					information(e.getPlayer(), id, data);
 				}
 			}
@@ -143,19 +143,19 @@ public class main extends JavaPlugin implements Listener{
 			catch (SQLException e) { e.printStackTrace(); }
 			if(!(prix == 0 && stock == 0)){
 				ItemStack info = new ItemStack(Integer.parseInt(id), 0, Byte.parseByte(data));
-				joueur.sendMessage(ChatColor.GOLD + "----- " + info.getType().toString() + ":" + data + " -----");
+				joueur.sendMessage(ChatColor.GOLD + "----- " + info.getType().toString() + (data.equalsIgnoreCase("0")?"":":" + data) + " -----");
 				joueur.sendMessage(ChatColor.GOLD + "Prix : " + ShopCommand.formatDouble(prix, 2) + " EIG");
 				joueur.sendMessage(ChatColor.RED + "Prix sans stock : " + ShopCommand.formatDouble(prix * 1.1, 2) + " EIG");
 				joueur.sendMessage(ChatColor.GOLD + "Stock : " + stock);
-				joueur.sendMessage(Shop.shop_message + "Commande pour acheter : /shop acheter " + id + (data.equalsIgnoreCase("Pas de data")?"":" " + data) + " [quantité]");
-				joueur.sendMessage(Shop.shop_message + "Commande pour vendre : /shop vendre " + id + (data.equalsIgnoreCase("Pas de data")?"":" " + data) + " [quantité]");
+				joueur.sendMessage(Shop.shop_message + "Commande pour acheter : /shop acheter " + id + (data.equalsIgnoreCase("0")?"":" " + data) + " [quantité]");
+				joueur.sendMessage(Shop.shop_message + "Commande pour vendre : /shop vendre " + id + (data.equalsIgnoreCase("0")?"":" " + data) + " [quantité]");
 			}
 			else{
 				joueur.sendMessage(Shop.shop_message + ChatColor.RED + "Ce shop n'est pas encore configuré");
 			}
 		}
 		else{
-			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id, la data et le prix doivent être des nombres");
+			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id et la data doivent être des nombres");
 		}
 		return true;
 	}

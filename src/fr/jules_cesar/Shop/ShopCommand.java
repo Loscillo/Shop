@@ -228,7 +228,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 			}
 		}
 		else{
-			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id, la data et le prix doivent être des nombres");
+			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id et la data doivent être des nombres");
 		}
 		return true;
 	}
