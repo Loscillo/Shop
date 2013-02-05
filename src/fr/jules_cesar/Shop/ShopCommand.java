@@ -56,7 +56,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 		}
 	}
 	
-	// Permet de créer le magasin de id
+	// Permet de crÔøΩer le magasin de id
 	private boolean creer(Player joueur, String id, String data, String prix) {
 		if(Vault.perms.has(joueur, "shop.modification")){
 			if(estunNombre(id) && estunNombre(data)){
@@ -66,7 +66,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 					Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
 				      
 				      Statement state = conn.createStatement();
-				      //L'objet ResultSet contient le résultat de la requête SQL
+				      //L'objet ResultSet contient le rÔøΩsultat de la requÔøΩte SQL
 				      ResultSet result = state.executeQuery("SELECT COUNT(*) FROM shop WHERE id = " + id + " AND data = " + data);
 				      result.next();
 				      int existe = Integer.parseInt(result.getObject(1).toString()); result.close();
@@ -77,7 +77,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				      }
 				      else{
 				    	  state.close();
-				    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop existe d\u00e9jà !");
+				    	  joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop existe d\u00e9jÔøΩ !");
 				      }
 				      
 				}
@@ -107,7 +107,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 						Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
 					      
 					      Statement state = conn.createStatement();
-					      //L'objet ResultSet contient le résultat de la requête SQL
+					      //L'objet ResultSet contient le rÔøΩsultat de la requÔøΩte SQL
 					      ResultSet result = state.executeQuery("SELECT COUNT(*) FROM shop WHERE id = " + id + " AND data = " + data);
 					      result.next();
 					      int existe = Integer.parseInt(result.getObject(1).toString()); result.close(); state.close(); conn.close();
@@ -127,7 +127,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				}
 			}
 			else{
-				joueur.sendMessage(shop_message + ChatColor.RED + "La quantit\u00e9 doit \u00eatre sup\u00e9rieure à 0");
+				joueur.sendMessage(shop_message + ChatColor.RED + "La quantit\u00e9 doit \u00eatre sup\u00e9rieure ÔøΩ 0");
 			}
 		}
 		else{
@@ -147,7 +147,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 						Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
 					      
 					      Statement state = conn.createStatement();
-					      //L'objet ResultSet contient le résultat de la requête SQL
+					      //L'objet ResultSet contient le rÔøΩsultat de la requÔøΩte SQL
 					      ResultSet result = state.executeQuery("SELECT COUNT(*) FROM shop WHERE id = " + id + " AND data = " + data);
 					      result.next();
 					      int existe = Integer.parseInt(result.getObject(1).toString()); result.close(); state.close(); conn.close();
@@ -167,7 +167,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				}
 			}
 			else{
-				joueur.sendMessage(shop_message + ChatColor.RED + "La quantit\u00e9 doit \u00eatre sup\u00e9rieure à 0");
+				joueur.sendMessage(shop_message + ChatColor.RED + "La quantit\u00e9 doit \u00eatre sup\u00e9rieure ÔøΩ 0");
 			}
 		}
 		else{
@@ -176,7 +176,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 		return true;
 	}
 
-	// Détermine si une chaine de caractère est un nombre
+	// DÔøΩtermine si une chaine de caractÔøΩre est un nombre
 	public static boolean estunNombre(String string){
 		Pattern pattern = Pattern.compile("[^0-9]");
 		Matcher matcher = pattern.matcher(string);
@@ -204,7 +204,7 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				Connection conn = DriverManager.getConnection(main.getUrl(), main.getUser(), main.getPass());
 			      
 			      Statement state = conn.createStatement();
-			      //L'objet ResultSet contient le résultat de la requête SQL
+			      //L'objet ResultSet contient le rÔøΩsultat de la requÔøΩte SQL
 			      ResultSet result = state.executeQuery("SELECT prix, stock FROM shop WHERE id = " + id + " AND data = " + data);
 			      while(result.next()){
 			    	  prix = result.getDouble(1);
@@ -222,13 +222,14 @@ public class ShopCommand extends JavaPlugin implements CommandExecutor {
 				joueur.sendMessage(ChatColor.GOLD + "Prix : " + formatDouble(prix, 2) + " EIG");
 				joueur.sendMessage(ChatColor.RED + "Prix sans stock : " + formatDouble(prix * 1.1, 2) + " EIG");
 				joueur.sendMessage(ChatColor.GOLD + "Stock : " + stock);
+				joueur.sendMessage(ChatColor.AQUA + "")
 			}
 			else{
 				joueur.sendMessage(shop_message + ChatColor.RED + "Ce shop n'est pas encore configur\u00e9");
 			}
 		}
 		else{
-			joueur.sendMessage(ChatColor.GOLD + "[SHOP] " + ChatColor.RED + "L'id et la data doivent \u00eatre des nombres");
+			joueur.sendMessage(shop_message + ChatColor.RED + "L'id et la data doivent \u00eatre des nombres");
 		}
 		return true;
 	}
